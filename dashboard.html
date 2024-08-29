@@ -1,0 +1,42 @@
+<!-- templates/admin_dashboard.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MMU JOB PORTAL</title>
+</head>
+</html>
+
+
+<!-- templates/admin_dashboard.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <header>
+        <h1>MMU JOB PORTAL</h1>
+    </header>
+    <div class="container">
+        <nav>
+            <a href="{{ url_for('login') }}" class="btn">Login</a>
+            <a href="{{ url_for('admin_dashboard') }}">Dashboard</a>
+            <a href="{{ url_for('manage_jobs') }}">Manage Jobs</a>
+            <a href="{{ url_for('logout') }}" class="btn">Logout</a>
+            <a href="{{ url_for('terms_and_condition') }}" class="btn">Terms and Condition</a>
+        </nav>
+        <div class="content">
+            <p>Welcome,Tharsha Phupalan</p>
+            <!-- Add your admin features here -->
+        </div>
+    </div>
+    <footer>
+        <p>2024 MMU Job Portal</p>
+    </footer>
+</body>
+</html>
