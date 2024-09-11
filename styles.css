@@ -143,3 +143,51 @@ body {
     text-decoration: underline;
 }
 
+/* General Body Styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #e0f2f1; /* Light green background */
+    color: #004d40; /* Dark green text color */
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* Container for Login Form */
+.login-container {
+    background-color: #ffffff; /* White background for the form */
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 100%;
+    max-width: 400px;
+}
+
+/* Form Title */
+.login-container h2 {
+    color: #00796b; /* Teal color for the title */
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* Form Inputs */
+.login-container input[type="text"],
+.login-container input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #00796b; /* Teal border */
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.login-container input[type="text"]:focus,
+.login-container input[type="password"]:focus {
+    border-color: #004d40; /* Dark green border on focus */
+    outline: none;
+}
+
+/* Submit Button */

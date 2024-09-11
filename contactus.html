@@ -1,97 +1,101 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Us - MMU Job Portal</title>
-    <link rel="stylesheet" href="styles.css">
+    <meta charset='utf-8'>
+    <title>Contact Us</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"> 
+    <style>
+        body {
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            max-width: 800px;
+            padding: 20px;
+        }
+        .contact-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .contact-header h1 {
+            font-size: 48px;
+            margin: 0;
+            display: inline-block;
+            padding: 10px 20px; /* Adjust padding to create a slight curve */
+            border-radius: 30px; /* Create a slight curve */
+            background-color: #ccc; /* Grey background color */
+            animation: popUp 1s ease-in-out;
+        }
+        .contact-details {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+        .contact-box {
+            width: calc(50% - 20px);
+            background-color: #f0f0f0; /* Grey background color */
+            padding: 20px;
+            border-radius: 30px; /* Slightly curved edges */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            transition: transform 0.3s ease;
+        }
+        .contact-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        }
+        .contact-box h2 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+        .contact-box p {
+            color: #666;
+            margin: 0;
+        }
+        @media (max-width: 600px) {
+            .contact-box {
+                width: 100%;
+            }
+        }
+        @keyframes popUp {
+            0% {
+                transform: scale(0);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+    </style>
 </head>
 <body>
-    <div class="contact-us">
-        <h1>Contact Us</h1>
-        <p>We'd love to hear from you! If you have any questions or feedback, please reach out to us using the information below:</p>
-        
-        <div class="contact-info">
-            <div class="info-item">
+    <div class="container">
+        <div class="contact-header animate__animated animate__bounceInDown"> 
+            <h1>CONTACT</h1> 
+        </div>
+        <div class="contact-details">
+            <div class="contact-box animate__animated animate__fadeInLeft"> 
                 <h2>Email</h2>
-                <p><a href="mailto:mmujobportal@gmail.com">mmujobportal@gmail.com</a></p>
+                <p>MMUCyberPartTimeJobs@gmail.com</p>
             </div>
-            
-            <div class="info-item">
-                <h2>Phone</h2>
-                <p><a href="tel:1300-800-668">1300-800-668</a></p>
+            <div class="contact-box animate__animated animate__fadeInRight"> 
+                <h2>Admission Office</h2>
+                <p>Tel: +603 – 8312 5803</p>
+                <p>Fax: +603 – 8312 5080</p>
             </div>
-
-            <div class="info-item">
-                <h2>Business Hours</h2>
-                <p><a href="time:Mon-Fri (8.30am-5.00pm) (GMT+8)">Mon-Fri (8.30am-5.00pm) (GMT+8)</a></p>
-            </div>
-            
-            <div class="info-item">
-                <h2>Address</h2>
-                <p>Multimedia University, Persiaran Multimedia, 63100 Cyberjaya, Selangor, Malaysia</p>
+            <div class="contact-box animate__animated animate__fadeInLeft"> 
+                <h2>Institute for Postgraduate Studies (IPS)</h2>
+                <p>Tel: +603 – 8312 5276 / 5182</p>
+                <p>Fax: +603 – 8312 5300</p>
+                <p>Address: Multimedia University, Persiaran Multimedia, 63100 Cyberjaya, Selangor, Malaysia</p>
+                <p>Business Hours: Mon-Fri (8.30am-5.00pm) (GMT+8)</p>
             </div>
         </div>
     </div>
 </body>
 </html>
-
-<body{
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
-    margin: 0;
-    padding: 0;
-}
-
-.contact-us {
-    background-color: #e8f5e9;
-    color: #2e7d32;
-    padding: 20px;
-    margin: 20px auto;
-    max-width: 800px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-.contact-us h1 {
-    text-align: center;
-    color: #388e3c;
-    margin-bottom: 20px;
-}
-
-.contact-us p {
-    text-align: center;
-    margin-bottom: 20px;
-}
-
-.contact-info {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-}
-
-.info-item {
-    background-color: #ffffff;
-    border: 1px solid #c8e6c9;
-    border-radius: 8px;
-    padding: 15px;
-}
-
-.info-item h2 {
-    margin-top: 0;
-    color: #388e3c;
-}
-
-.info-item p {
-    margin: 5px 0;
-}
-
-.info-item a {
-    color: #2e7d32;
-    text-decoration: none;
-}
-
-.info-item a:hover {
-    text-decoration: underline;
-}
-
