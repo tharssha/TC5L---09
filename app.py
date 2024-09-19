@@ -87,23 +87,6 @@ def main():
 def welcome():
     return render_template('welcome.html')
 
-@app.route('/dashboard.html')
-def dashboard():
-    return render_template('dashboard.html')
-
-@app.route('/settings.html')
-def settings():
-    return render_template('settings.html')
-
-
-@app.route('/manage_users.html')
-def manage_users():
-    return render_template('manage_users.html')
-
-@app.route('/post_jobs.html')
-def post_jobs():
-    return render_template('post_jobs.html')
-
 @app.route('/forgot_password/')
 def forgot_password():
     return render_template('forgot_password.html')
@@ -111,6 +94,11 @@ def forgot_password():
 @app.route('/reset_password')
 def request_reset_password():
     return render_template('request_reset_password.html')
+
+@app.route('/reset2')
+def reset2():
+    return render_template('reset2.html')
+
 
 if __name__ == '__main__':
     app.run(debug=True)    
