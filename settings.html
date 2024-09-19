@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Settings</title>
+    <link rel="stylesheet" href="admin-settings.css"> <!-- Link to the external CSS file -->
+</head>
+<body>
+    <div class="container">
+        <h1>Admin Settings</h1>
+        <form class="settings-form">
+            <!-- Site Settings -->
+            <fieldset>
+                <legend> Settings</legend>
+                <label for="site-name">Name:</label>
+                <input type="text" id="site-name" name="site-name" value="My Website" required>
+                
+                <label for="site-url">Site URL:</label>
+                <input type="url" id="site-url" name="site-url" value="https://www.example.com" required>
+                
+                <label for="site-description">Description:</label>
+                <textarea id="site-description" name="site-description" rows="4" required>Welcome to MMU job portal</textarea>
+            </fieldset>
+            
+            <!-- User Management -->
+            <fieldset>
+                <legend>User Management</legend>
+                <label for="admin-email">Admin Email:</label>
+                <input type="email" id="admin-email" name="admin-email" value="admin@example.com" required>
+                
+                <label for="password">Change Password:</label>
+                <input type="password" id="password" name="password" placeholder="New password" required>
+                
+                <label for="password-confirm">Confirm Password:</label>
+                <input type="password" id="password-confirm" name="password-confirm" placeholder="Confirm new password" required>
+            </fieldset>
+            
+            <!-- Security Settings -->
+            <fieldset>
+                <legend>Security Settings</legend>
+                <label for="two-factor-auth">
+                    <input type="checkbox" id="two-factor-auth" name="two-factor-auth" checked>
+                    Enable Two-Factor Authentication
+                </label>
+                
+                <label for="captcha">
+                    <input type="checkbox" id="captcha" name="captcha">
+                    Enable CAPTCHA on Login
+                </label>
+            </fieldset>
+            
+            <!-- Notification Settings -->
+            <fieldset>
+                <legend>Notification Settings</legend>
+                <label for="email-notifications">
+                    <input type="checkbox" id="email-notifications" name="email-notifications" checked>
+                    Email Notifications for User Activities
+                </label>
+                
+                <label for="sms-notifications">
+                    <input type="checkbox" id="sms-notifications" name="sms-notifications">
+                    SMS Notifications for Critical Alerts
+                </label>
+            </fieldset>
+            
+            <!-- Save Changes -->
+            <button type="submit" class="button">Save Changes</button>
+        </form>
+    </div>
+</body>
+</html>
+<style>body {
+    background-color: #f5f5f5; /* Light gray background */
+    font-family: Arial, sans-serif; /* Clean sans-serif font */
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 80%;
+    max-width: 1000px;
+    margin: 30px auto;
+    padding: 20px;
+    background-color: #ffffff; /* White background for the form */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+h1 {
+    text-align: center;
+    color: #333; /* Dark text color for contrast */
+    margin-bottom: 20px;
+}
+
+.settings-form {
+    display: grid;
+    gap: 20px; /* Space between form sections */
+}
+
+fieldset {
+    border: 1px solid #ddd; /* Light gray border */
+    border-radius: 8px; /* Rounded corners */
+    padding: 20px;
+    background-color: #fafafa; /* Light background for each section */
+}
+
+legend {
+    font-weight: bold;
+    color: #333; /* Dark color for the legend text */
+    padding: 0 10px;
+}
+
+label {
+    display: block;
+    margin-bottom: 15px;
+    color: #555; /* Slightly lighter than the legend */
+}
+
+input[type="text"],
+input[type="email"],
+input[type="url"],
+input[type="password"],
+textarea,
+select {
+    width: 100%; /* Full width inputs */
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ddd; /* Light gray border */
+    border-radius: 4px; /* Rounded corners for inputs */
+}
+
+textarea {
+    resize: vertical; /* Allow vertical resizing only */
+}
+
+input[type="checkbox"] {
+    margin-right: 10px; /* Space between checkbox and label */
+}
+
+button.button {
+    display: block;
+    width: 100%;
+    max-width: 200px;
+    margin: 20px auto;
+    padding: 10px;
+    background: #007bff; /* Primary color */
+    color: white;
+    border: none;
+    border-radius: 8px;
+    text-align: center;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+button.button:hover {
+    background: #0056b3; /* Darker shade for hover effect */
+}
+</style>
