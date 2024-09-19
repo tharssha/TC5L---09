@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, request, render_template, redirect, url_for
 import sqlite3
 
 app = Flask(__name__)
@@ -8,21 +8,6 @@ def init_sqlite_db():
     conn = sqlite3.connect('database.db')
     print("Opened database successfully")
     
- # Create a new table for sign-up data
-    conn.execute('''
-        CREATE TABLE IF NOT EXISTS students_signup (
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
-            name TEXT NOT NULL,
-            student_id TEXT NOT NULL,
-            email TEXT NOT NULL,
-            age INTEGER NOT NULL,
-            faculty TEXT NOT NULL,
-            phone_number TEXT NOT NULL,
-            password TEXT NOT NULL
-        )
-    ''')
-    print("Signup table created successfully")
-    conn.close()
 
 # Initialize the database
 init_sqlite_db()
@@ -64,6 +49,68 @@ def register():
             con.commit()
             return "Registration successful!"
     return render_template('signup.html')
+# Connect to the existing SQLite database
+def create_connection():
+    conn = sqlite3.connect('database.db')  # Connect to your existing database
+    return conn
+
+# Function to create the jobs table
+def create_jobs_table(conn):
+    create_table_sql = """
+    CREATE TABLE IF NOT EXISTS jobs (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        title TEXT NOT NULL,
+        category TEXT NOT NULL,
+        interview_details TEXT NOT NULL,
+        news TEXT NOT NULL
+    );
+    """
+    try:
+        conn.execute(create_table_sql)
+        conn.commit()
+        print("Table 'jobs' added to the existing database successfully.")
+    except sqlite3.Error as e:
+        print(f"Error creating table: {e}")
+
+# Main function to create the table
+def main():
+    # Create connection
+    conn = create_connection()
+
+    # Create jobs table
+    create_jobs_table(conn)
+
+    # Close the connection
+    conn.close()
+
+@app.route('/welcome')
+def welcome():
+    return render_template('welcome.html')
+
+@app.route('/dashboard.html')
+def dashboard():
+    return render_template('dashboard.html')
+
+@app.route('/settings.html')
+def settings():
+    return render_template('settings.html')
+
+
+@app.route('/manage_users.html')
+def manage_users():
+    return render_template('manage_users.html')
+
+@app.route('/post_jobs.html')
+def post_jobs():
+    return render_template('post_jobs.html')
+
+@app.route('/forgot_password/')
+def forgot_password():
+    return render_template('forgot_password.html')
+
+@app.route('/reset_password')
+def request_reset_password():
+    return render_template('request_reset_password.html')
 
 if __name__ == '__main__':
     app.run(debug=True)    
