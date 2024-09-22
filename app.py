@@ -1,30 +1,67 @@
-from flask import Flask, request, render_template, redirect, url_for
+from flask import Flask, render_template, request, redirect, url_for, session
 import sqlite3
+from werkzeug.security import generate_password_hash, check_password_hash
 
 app = Flask(__name__)
+app.secret_key = 'your_secret_key'  # Needed for session management
 
 # Initialize the SQLite database
 def init_sqlite_db():
     conn = sqlite3.connect('database.db')
     print("Opened database successfully")
-    
+
+    # Create a new table for sign-up data
+    conn.execute('''
+        CREATE TABLE IF NOT EXISTS students_signup (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            name TEXT NOT NULL,
+            student_id INTEGER NOT NULL,
+            email TEXT NOT NULL,
+            age INTEGER NOT NULL,
+            faculty TEXT NOT NULL,
+            phone_number TEXT NOT NULL,
+            password TEXT NOT NULL
+        )
+    ''')
+    print("Signup table created successfully")
+    conn.close()
 
 # Initialize the database
 init_sqlite_db()
 
+@app.route('/welcome/')
+def welcome():
+    return  render_template('welcome.html')
+    
 # Home route (login)
-@app.route('/login/', methods=['GET', 'POST'])
+@app.route('/welcome/login.html', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
         email = request.form['email']
         password = request.form['password']
 
+        # Check if the user exists in the database
         with sqlite3.connect("database.db") as con:
             cur = con.cursor()
-            cur.execute("INSERT INTO students (email, password) VALUES (?, ?)", (email, password))
-            con.commit()
-            return "Login successful"
+            cur.execute("SELECT * FROM students_signup WHERE email = ?", (email,))
+            user = cur.fetchone()
+
+            if user:
+                # user[7] is the hashed password in the DB
+                if check_password_hash(user[7], password):
+                    session['user'] = user[0]  # Store user ID in session
+                    return redirect(url_for('dashboard'))  # Redirect to the dashboard
+                else:
+                    return "Invalid password"
+            else:
+                return "User not found"
     return render_template('login.html')
+
+#route to dashboard after login
+@app.route('/dashboard/')
+def dashboard():
+    return  render_template('dashboard.html')
+    
 
 # Registration route (sign-up)
 @app.route('/register/', methods=['GET', 'POST'])
@@ -39,66 +76,20 @@ def register():
         phone_number = request.form['phone_number']
         password = request.form['password']
 
+        # Hash the password before saving it
+        hashed_password = generate_password_hash(password)
+
         # Save sign-up data to database
         with sqlite3.connect("database.db") as con:
             cur = con.cursor()
             cur.execute('''
                 INSERT INTO students_signup (name, student_id, email, age, faculty, phone_number, password)
                 VALUES (?, ?, ?, ?, ?, ?, ?)
-            ''', (name, student_id, email, age, faculty, phone_number, password))
+            ''', (name, student_id, email, age, faculty, phone_number, hashed_password))
             con.commit()
             return "Registration successful!"
     return render_template('signup.html')
-# Connect to the existing SQLite database
-def create_connection():
-    conn = sqlite3.connect('database.db')  # Connect to your existing database
-    return conn
-
-# Function to create the jobs table
-def create_jobs_table(conn):
-    create_table_sql = """
-    CREATE TABLE IF NOT EXISTS jobs (
-        id INTEGER PRIMARY KEY AUTOINCREMENT,
-        title TEXT NOT NULL,
-        category TEXT NOT NULL,
-        interview_details TEXT NOT NULL,
-        news TEXT NOT NULL
-    );
-    """
-    try:
-        conn.execute(create_table_sql)
-        conn.commit()
-        print("Table 'jobs' added to the existing database successfully.")
-    except sqlite3.Error as e:
-        print(f"Error creating table: {e}")
-
-# Main function to create the table
-def main():
-    # Create connection
-    conn = create_connection()
-
-    # Create jobs table
-    create_jobs_table(conn)
-
-    # Close the connection
-    conn.close()
-
-@app.route('/welcome')
-def welcome():
-    return render_template('welcome.html')
-
-@app.route('/forgot_password/')
-def forgot_password():
-    return render_template('forgot_password.html')
-
-@app.route('/reset_password')
-def request_reset_password():
-    return render_template('request_reset_password.html')
-
-@app.route('/reset2')
-def reset2():
-    return render_template('reset2.html')
 
 
 if __name__ == '__main__':
-    app.run(debug=True)    
+    app.run(debug=True)
