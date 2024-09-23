@@ -90,6 +90,10 @@ def register():
             return "Registration successful!"
     return render_template('signup.html')
 
+@app.route('/dashboard for recruiters.html/')
+def home():
+    return  render_template('recruiters home.html')
+    
 
 if __name__ == '__main__':
     app.run(debug=True)
