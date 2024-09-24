@@ -60,7 +60,7 @@ def login():
 #route to dashboard after login
 @app.route('/dashboard/')
 def dashboard():
-    return  render_template('dashboard.html')
+    return render_template('dashboard.html')
     
 
 # Registration route (sign-up)
@@ -90,10 +90,30 @@ def register():
             return "Registration successful!"
     return render_template('signup.html')
 
-@app.route('/dashboard for recruiters.html/')
-def home():
-    return  render_template('recruiters home.html')
-    
+@app.route('/dashboard/jobs.html')
+def available_jobs():
+    return render_template('jobs.html')
+
+@app.route('/dashboard/post_jobs.html')
+def post_jobs():
+    return render_template('post_jobs.html')
+
+@app.route('/dashboard/contactus.html')
+def contactus():
+    return render_template('contactus.html')
+
+@app.route('/dashboard/terms&conditions.html')
+def terms_conditions():
+    return render_template('/term&condition.html')
+
+@app.route('/dashboard/settings.html')
+def settings():
+    return render_template('/settings.html')        
+
+@app.route('/dashboard/profile.html')
+def profile():
+    return render_template('/profile.html')        
+                
 
 if __name__ == '__main__':
     app.run(debug=True)
