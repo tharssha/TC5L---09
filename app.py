@@ -115,5 +115,10 @@ def profile():
 def post_jobs():
     return render_template('post_jobs.html')                
 
+@app.route('/dashboard/faq.html')
+def faq():
+    return render_template('faq.html')
+
+
 if __name__ == '__main__':
     app.run(debug=True)
