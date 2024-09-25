@@ -90,13 +90,10 @@ def register():
             return "Registration successful!"
     return render_template('signup.html')
 
+
 @app.route('/dashboard/jobs.html')
 def available_jobs():
     return render_template('jobs.html')
-
-@app.route('/dashboard/post_jobs.html')
-def post_jobs():
-    return render_template('post_jobs.html')
 
 @app.route('/dashboard/contactus.html')
 def contactus():
@@ -113,7 +110,10 @@ def settings():
 @app.route('/dashboard/profile.html')
 def profile():
     return render_template('/profile.html')        
-                
+
+@app.route('/dashboard/post_jobs.html')
+def post_jobs():
+    return render_template('post_jobs.html')                
 
 if __name__ == '__main__':
     app.run(debug=True)
