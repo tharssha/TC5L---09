@@ -1,0 +1,232 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Barlow:wght@500&display=swap');
+
+*{
+    margin: 0%;
+    padding: 0%;
+    font-weight: 500;
+    font-size: 14px;
+}
+body{
+    background:linear-gradient(135deg, #E3E3E3 0%,#111a6b 100%);
+    display: grid;
+    place-items: center;
+    font-weight: 450;
+    opacity: 1;
+    max-height: 800px;
+}
+
+.page-break {
+    page-break-after: always;
+}
+
+.none
+{
+    display: none;
+}
+.resume
+{
+    margin-top: 20px;
+    width: 800px;
+    box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px;
+}
+#print
+{
+    background-color: #ffffff;
+    padding: 30px 50px;
+    height: 1120px;
+
+}
+
+.image-preview {
+    width: 20%;
+    height: 175px;
+    border: 2px dashed #ccc;
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+    margin-bottom: 15px;
+}
+
+.image-preview img {
+    max-width: 100%;
+    max-height: 100%;
+    display: block;
+}
+
+.hide {
+    display: none;
+}
+
+.contacts
+{
+    text-align: right;
+    padding-top: 0%;
+    align-self: flex-start;
+    padding: right;
+    display: flex;
+    align-items: center;
+}
+.contacts .content
+{
+    font-weight: 500;
+    padding-right: 5px;
+    margin-right: 15px;
+}
+.contacts .symbol
+{
+    margin-right:10px;
+    font-size: 15px;
+    width: 17px;
+    height: 17px;
+
+}
+
+.head {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.head .main .name
+{
+    font-size: 55px;
+    font-family: 'Raleway', sans-serif;
+    padding-left: 0%;
+}
+
+.head .main  span:nth-child(2)
+{
+    color: rgb(124, 124, 124);
+    font-size: 55px;
+    font-family: 'Raleway', sans-serif;
+    margin-left: 5px;
+}
+
+.head .main .post
+{
+font-family: 'Barlow', sans-serif;
+margin-bottom: 20px;
+}
+
+.line
+{
+    height: 0.5px;
+    background-color: rgb(0, 0, 0);
+    margin: 25px 0;
+    margin-bottom: 50px;
+}
+.mainbody
+{
+    display: grid;
+    grid-template-columns: 10fr 1fr 17fr;
+    height: 900px;
+}
+.mainbody .border
+{
+    background-color: rgb(0, 0, 0);
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 290px;
+    width: 3px;
+    opacity: 2;
+}
+.mainbody .rightside
+{
+    padding-left: 15px;
+}
+.title
+{
+    font-weight: 700;
+    font-size: 18px;
+    border: none;
+    padding-bottom: 3px;
+    border-bottom: 2px rgb(38, 54, 226) solid;
+}
+.skill
+{
+    margin-bottom: 6px;
+}
+button
+{
+    margin: 15px 0;
+}
+.language
+{
+    margin-bottom:6px;
+}
+.language span:nth-child(odd)
+{
+    font-weight: 700;
+}
+.edublock{
+    margin-bottom: 10px;
+}
+.edublock .head
+{
+    font-weight: 700;
+    font-size: 17px;
+}
+
+.navbtn
+{
+position: fixed;
+top: 40%;
+right: 2%;
+transform: translate(-40%,-2%);
+height: 60px;
+width: 60px;
+border-radius: 50%;
+border:#fff 2px solid;
+transition: 300ms ease-in-out;
+box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px;
+}
+.navbtn:nth-child(2)
+{
+top: 50%;
+right: 1.5%;
+transform: translate(-50%,-1.5%);
+}
+.navbtn:nth-child(3)
+{
+top: 60%;
+right: 1%;
+transform: translate(-60%,-1%);
+}
+.navbtn:hover
+{
+    background-color: black;
+    color: #fff;
+    border: #000 2px solid;
+    height: 65px;
+    width: 65px;
+}
+.input-checkbox{
+    margin-right: 10px;
+}
+.education-head{
+    font-weight: 700;
+    font-size: 17px;
+}
+
+.btn-success{
+    background-color: #568ace;
+    border:#568ace;
+}
+
+.btn-success:hover {
+    background-color:#132e52;
+    color: #fff;
+    border: #132e52 2px solid;
+}
+
+.btn-danger {
+    background-color: #c57575;
+    border: #c57575;
+}
+
+.btn-danger:hover {
+    background-color:#754646;
+    color: #fff;
+    border: #754646 2px solid;
+}
