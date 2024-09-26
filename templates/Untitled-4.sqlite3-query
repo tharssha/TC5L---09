@@ -1,0 +1,3 @@
+-- database: c:\Users\LENOVO\Desktop\job portal\jobs.db
+
+SELECT * FROM jobs;
