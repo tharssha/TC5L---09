@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Post Jobs - Admin Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <header>
+        <h1>POST JOBS</h1>
+    </header>
+    
+        <main class="main-content">
+            <div class="dashboard-header">
+                <h2>Post Jobs</h2>
+                <button class="btn add-job">Add Job</button>
+            </div>
+            <section class="job-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Job Title</th>
+                            <th>Company</th>
+                            <th>Location</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="jobTableBody">
+                        <tr data-id="1">
+                            <td>1</td>
+                            <td>Software Developer</td>
+                            <td>Tech Co.</td>
+                            <td>Remote</td>
+                            <td>Open</td>
+                            <td>
+                                <button class="btn edit">Edit</button>
+                                <button class="btn delete">Delete</button>
+                            </td>
+                        </tr>
+                        <tr data-id="2">
+                            <td>2</td>
+                            <td>Data Analyst</td>
+                            <td>Data Corp.</td>
+                            <td>New York</td>
+                            <td>Open</td>
+                            <td>
+                                <button class="btn edit">Edit</button>
+                                <button class="btn delete">Delete</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <!-- Add Job Modal -->
+            <div id="addJobModal" class="modal">
+                <div class="modal-content">
+                    <span class="close" onclick="closeAddJobModal()">&times;</span>
+                    <h2>Add Job</h2>
+                    <form id="addJobForm">
+                        <div class="form-group">
+                            <label for="jobTitle">Job Title:</label>
+                            <input type="text" id="jobTitle" name="jobTitle" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="company">Company:</label>
+                            <input type="text" id="company" name="company" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="location">Location:</label>
+                            <input type="text" id="location" name="location" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="status">Status:</label>
+                            <select id="status" name="status">
+                                <option value="open">Open</option>
+                                <option value="closed">Closed</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn">Add Job</button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Edit Job Modal -->
+            <div id="editJobModal" class="modal">
+                <div class="modal-content">
+                    <span class="close" onclick="closeEditJobModal()">&times;</span>
+                    <h2>Edit Job</h2>
+                    <form id="editJobForm">
+                        <div class="form-group">
+                            <label for="editJobTitle">Job Title:</label>
+                            <input type="text" id="editJobTitle" name="editJobTitle" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="editCompany">Company:</label>
+                            <input type="text" id="editCompany" name="editCompany" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="editLocation">Location:</label>
+                            <input type="text" id="editLocation" name="editLocation" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="editStatus">Status:</label>
+                            <select id="editStatus" name="editStatus">
+                                <option value="open">Open</option>
+                                <option value="closed">Closed</option>
+                            </select>
+                        </div>
+                        <input type="hidden" id="editJobId" name="editJobId">
+                        <button type="submit" class="btn">Update Job</button>
+                    </form>
+                </div>
+            </div>
+        </main>
+    </div>
+    <footer>
+        <p>&copy; 2024 MMU Job Portal Admin Dashboard</p>
+    </footer>
+
+    <script>
+        // Get modals
+        var addJobModal = document.getElementById("addJobModal");
+        var editJobModal = document.getElementById("editJobModal");
+
+        // Open Add Job modal
+        document.querySelector(".add-job").onclick = function() {
+            addJobModal.style.display = "block";
+        }
+
+        // Close Add Job modal
+        function closeAddJobModal() {
+            addJobModal.style.display = "none";
+        }
+
+        // Close Edit Job modal
+        function closeEditJobModal() {
+            editJobModal.style.display = "none";
+        }
+
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function(event) {
+            if (event.target == addJobModal) {
+                closeAddJobModal();
+            } else if (event.target == editJobModal) {
+                closeEditJobModal();
+            }
+        }
+
+        // Handle Add Job form submission
+        document.getElementById("addJobForm").onsubmit = function(event) {
+            event.preventDefault(); // Prevent page refresh
+
+            // Get form data
+            var jobTitle = document.getElementById("jobTitle").value;
+            var company = document.getElementById("company").value;
+            var location = document.getElementById("location").value;
+            var status = document.getElementById("status").value;
+
+            // Create new job row in the table
+            var jobTableBody = document.getElementById("jobTableBody");
+            var newRow = jobTableBody.insertRow();
+            newRow.setAttribute("data-id", jobTableBody.rows.length + 1); // Simple ID increment
+            newRow.innerHTML = `
+                <td>${jobTableBody.rows.length}</td>
+                <td>${jobTitle}</td>
+                <td>${company}</td>
+                <td>${location}</td>
+                <td>${status.charAt(0).toUpperCase() + status.slice(1)}</td>
+                <td>
+                    <button class="btn edit">Edit</button>
+                    <button class="btn delete">Delete</button>
+                </td>
+            `;
+
+            // Close the modal and reset the form
+            closeAddJobModal();
+            document.getElementById("addJobForm").reset();
+        }
+
+        // Handle Edit Job form submission
+        document.getElementById("editJobForm").onsubmit = function(event) {
+            event.preventDefault(); // Prevent page refresh
+
+            // Get form data
+            var jobTitle = document.getElementById("editJobTitle").value;
+            var company = document.getElementById("editCompany").value;
+            var location = document.getElementById("editLocation").value;
+            var status = document.getElementById("editStatus").value;
+            var jobId = document.getElementById("editJobId").value;
+
+            // Update the row in the table
+            var row = document.querySelector(`tr[data-id="${jobId}"]`);
+            row.cells[1].textContent = jobTitle;
+            row.cells[2].textContent = company;
+            row.cells[3].textContent = location;
+            row.cells[4].textContent = status.charAt(0).toUpperCase() + status.slice(1);
+
+            // Close the modal and reset the form
+            closeEditJobModal();
+            document.getElementById("editJobForm").reset();
+        }
+
+        // Event delegation for edit and delete buttons
+        document.getElementById("jobTableBody").onclick = function(event) {
+            if (event.target.classList.contains("edit")) {
+                var row = event.target.closest("tr");
+                var jobId = row.getAttribute("data-id");
+                document.getElementById("editJobId").value = jobId;
+                document.getElementById("editJobTitle").value = row.cells[1].textContent;
+                document.getElementById("editCompany").value = row.cells[2].textContent;
+                document.getElementById("editLocation").value = row.cells[3].textContent;
+                document.getElementById("editStatus").value = row.cells[4].textContent.toLowerCase();
+                editJobModal.style.display = "block";
+            } else if (event.target.classList.contains("delete")) {
+                var row = event.target.closest("tr");
+                row.parentNode.removeChild(row);
+            }
+        }
+    </script>
+</body>
+</html>
+<style>/* General reset and box-sizing */
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    
+    /* Basic styles for the body */
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        line-height: 1.6;
+        background-color: #f4f4f4;
+        color: #333;
+    }
+    
+    /* Header styling */
+    header {
+        background: #007BFF;
+        color: #fff;
+        padding: 1rem 2rem;
+        text-align: center;
+        position: sticky;
+        top: 0;
+        width: 100%;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    
+    /* Main container styling */
+    .container {
+        display: flex;
+        height: calc(100vh - 80px); /* Adjust for header height */
+    }
+    
+    /* Sidebar styling */
+    .sidebar {
+        width: 250px;
+        background: #333;
+        color: #fff;
+        padding: 1rem;
+        position: sticky;
+        top: 80px; /* Adjust for header height */
+        height: calc(100vh - 80px); /* Adjust for header height */
+        overflow-y: auto;
+    }
+    
+    .sidebar nav {
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .nav-link {
+        color: #fff;
+        text-decoration: none;
+        margin-bottom: 10px;
+        padding: 10px;
+        border-radius: 5px;
+        display: block;
+    }
+    
+    .nav-link:hover,
+    .nav-link.active {
+        background: #007BFF;
+    }
+    
+    /* Main content styling */
+    .main-content {
+        flex: 1;
+        padding: 1rem 2rem;
+    }
+    
+    /* Dashboard header */
+    .dashboard-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+    }
+    
+    /* Job table styling */
+    .job-table {
+        background: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        margin-bottom: 20px;
+    }
+    
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+    
+    th, td {
+        padding: 15px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+    }
+    
+    th {
+        background: #007BFF;
+        color: white;
+    }
+    
+    tr:hover {
+        background-color: #f1f1f1;
+    }
+    
+    /* Button styles */
+    .btn {
+        background: #007BFF;
+        color: white;
+        padding: 10px 15px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background 0.3s;
+    }
+    
+    .btn:hover {
+        background: #0056b3;
+    }
+    
+    /* Modal Styles */
+    .modal {
+        display: none; /* Hidden by default */
+        position: fixed; /* Stay in place */
+        z-index: 1; /* Sit on top */
+        left: 0;
+        top: 0;
+        width: 100%; /* Full width */
+        height: 100%; /* Full height */
+        overflow: auto; /* Enable scroll if needed */
+        background-color: rgb(0,0,0); /* Fallback color */
+        background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    }
+    
+    .modal-content {
+        background-color: #fefefe;
+        margin: 15% auto; /* 15% from the top and centered */
+        padding: 20px;
+        border: 1px solid #888;
+        width: 80%; /* Could be more or less, depending on screen size */
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    
+    .close {
+        color: #aaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+    }
+    
+    .close:hover,
+    .close:focus {
+        color: black;
+        text-decoration: none;
+        cursor: pointer;
+    }
+    
+    /* Form group styles */
+    .form-group {
+        margin-bottom: 15px;
+    }
+    
+    .form-group label {
+        display: block;
+        margin-bottom: 5px;
+    }
+    
+    .form-group input,
+    .form-group select {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+    
+    /* Footer styling */
+    footer {
+        background: #333;
+        color: #fff;
+        text-align: center;
+        padding: 1rem;
+        position: relative;
+        width: 100%;
+    }
+    </style>

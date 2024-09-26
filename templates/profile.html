@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MMU Job Portal</title>
+    <link rel="stylesheet" href="main.css">
+</head>
+<body>
+    <header>
+        <h1>MMU Job Portal</h1>
+    </header>
+        <main class="main-content">
+            <div class="dashboard-header">
+                <h2>RESUME</h2>
+            </div>
+            <div class="col-md-12">
+                <form action="signup.html" method="post">
+                  
+                  <fieldset>
+                    
+                    <legend><span class="number">1</span> Basic Information</legend>
+                  
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="user_name">
+                  
+                    <label for="email">Email:</label>
+                    <input type="email" id="mail" name="user_email">
+                 
+                    <label for="password">Password:</label>
+                    <input type="password" id="password"       name="user_password">
+                  
+                    <label>Age:</label>
+                    <input type="radio" id="under_18" value="under_18" name="user_age"><label for="under_18" class="light">Under 18</label><br>
+                    <input type="radio" id="over_18" value="over_18" name="user_age"><label for="over_18" class="light">Over 18</label>
+                    
+                  </fieldset>
+                  <fieldset>  
+                  
+                    <legend><span class="number">2</span> RESUME</legend>
+                    
+                   <label for="bio">Bio:</label>
+                    <textarea id="bio" name="user_bio"></textarea>
+                  
+                    <label for="Status">Status:</label>
+                    <select id="Status" name="user_Status">
+                        <option value="Foundation">Foundation</option>
+                        <option value="Diploma">Diploma</option>
+                        <option value="Degree">Degree</option>
+                        <option value="Master">Master</option>
+                        <option value="PhD">PhD</option>
+                    </select>
+                  
+                   <label for="faculty">Faculty:</label>
+                    <select id="faculty" name="user_faculty">
+                        <option value="FCI">FCI_Faculty of Computing & Informatics</option>
+                        <option value="FIST">FIST_Faculty of Information Science & Technology</option>
+                        <option value="FCM">FCM_Faculty of Creative Multimedia</option>
+                        <option value="FAC">FAC_Faculty of Applied Communication</option>
+                        <option value="FCA">FCA_Faculty of Cinematic Arts</option>
+                        <option value="FOM">FOM_Faculty of Management</option>
+                        <option value="FOL">FOL_Faculty of Law</option>
+                        <option value="FOB">FOB_Faculty of Business</option>
+                        <option value="FOE">FOE_Faculty of Engineering</option>
+                        <option value="FET">FET_Faculty of Engineering & Technology</option>
+                    </select>
+                    
+                    <label>Job Role:</label>
+                    <input type="checkbox" id="Graduate" value="jobrole_graduate" name="user_jobrole"><label class="light" for="graduate">Graduate</label><br>
+                    <input type="checkbox" id="Internship" value="jobrole_internship" name="user_jobrole"><label class="light" for="internship">Internship</label><br>
+                    <input type="checkbox" id="Remote Jobseeker" value="jobrole_remotejobseeker" name="user_jobrole"><label class="light" for="remotejobseeker">Remote Jobseeker</label><br>
+                    <input type="checkbox" id="Freelancer & Gig Worker" value="jobrole_freelancer&gigworker" name="user_jobrole"><label class="light" for="freelancer&gigworker">Freelancer & Gig Worker</label><br>
+                    <input type="checkbox" id="Experienced" value="joblrole_experienced" name="user_jobrole"><label class="light" for="experienced">Experienced</label><br>
+                    <input type="checkbox" id="Passive Jobseeker" value="jobrole_passivejobseeker" name="user_jobrole"><label class="light" for="passivejobseeker">Passive Jobseeker</label>
+                    
+                   </fieldset>
+                 
+                  <button type="submit">Save Profile</button>
+                  
+                 </form>
+                  </div>
+                </div>
+        </main>
+    </div>
+
+</body>
+</html>
+
+<style>/* General reset and box-sizing */
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    
+    /* Basic styles for the body */
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        line-height: 1.6;
+        background-color: #f4f4f4;
+        color: #333;
+    }
+    
+    /* Header styling */
+    header {
+        background: #007BFF;
+        color: #ffffff;
+        padding: 1rem 2rem;
+        text-align: center;
+        position: sticky;
+        top: 0;
+        width: 100%;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    
+    header h1 {
+        margin: 0;
+    }
+
+    h2 {
+        color:#2f1c40;
+        text-align: center;
+    }
+    
+    /* Main container styling */
+    .container {
+        display: flex;
+        height: calc(100vh - 80px); /* Adjust for header height */
+    }
+    
+    /* Sidebar styling */
+    .sidebar {
+        width: 250px;
+        background: #333;
+        color: #fff;
+        padding: 1rem;
+        position: sticky;
+        top: 80px; /* Adjust for header height */
+        height: calc(100vh - 80px); /* Adjust for header height */
+        overflow-y: auto;
+    }
+    
+    .sidebar nav {
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .nav-link {
+        color: #fff;
+        text-decoration: none;
+        margin-bottom: 10px;
+        padding: 10px;
+        border-radius: 5px;
+        display: block;
+    }
+    
+    .nav-link:hover,
+    .nav-link.active {
+        background: #007BFF;
+    }
+    
+    /* Main content styling */
+    .main-content {
+        flex: 1;
+        padding: 1rem 2rem;
+    }
+    
+    .dashboard-header {
+        margin-bottom: 20px;
+    }
+    
+    .form-container {
+        background: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    body {
+    font-family: 'Georgia', sans-serif;
+    color: #ffffff;
+    }
+
+    form {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+    background: #2f1c40;
+    border-radius: 8px;
+    }
+    
+    .form-group {
+        margin-bottom: 20px;
+    }
+    
+    .form-group label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: bold;
+    }
+    
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+        background: rgba(255,255,255,0.1);
+        border: none;
+        font-size: 16px;
+        height: auto;
+        margin: 0;
+        outline: 0;
+        padding: 15px;
+        width: 100%;
+        background-color: #c1a5ee;
+        color: #000000;
+        box-shadow: 0 1px 0 rgba(0,0,0,0.03) inset;
+        margin-bottom: 30px;
+    }
+
+    input[type="radio"],
+    input[type="checkbox"] {
+    margin: 0 4px 8px 0;
+    }
+
+    fieldset {
+    margin-bottom: 30px;
+    border: none;
+    }
+
+    legend {
+    font-size: 1.4em;
+    margin-bottom: 10px;
+    }
+
+    label {
+    display: block;
+    margin-bottom: 8px;
+    }
+
+    label.light {
+    font-weight: 300;
+    display: inline;
+    }
+
+    .number {
+    background-color: #ffffff;
+    color: #000000;
+    height: 30px;
+    width: 30px;
+    display: inline-block;
+    font-size: 0.8em;
+    margin-right: 4px;
+    line-height: 30px;
+    text-align: center;
+    text-shadow: 0 1px 0 rgba(255,255,255,0.2);
+    border-radius: 100%;
+    }
+
+    button {
+    padding: 19px 39px 18px 39px;
+    color: #ffffff;
+    background-color: #c1a5ee;
+    font-size: 18px;
+    text-align: center;
+    font-style: normal;
+    border-radius: 5px;
+    width: 100%;
+    border: 1px solid #c1a5ee;
+    border-width: 1px 1px 3px;
+    box-shadow: 0 -1px 0 rgba(255,255,255,0.1) inset;
+    margin-bottom: 10px;
+    }
+    
+    .button {
+        display: block;
+        width: 100%;
+        max-width: 300px;
+        margin: 20px auto;
+        padding: 10px;
+        background: #007BFF;
+        color: white;
+        text-align: center;
+        text-decoration: none;
+        border-radius: 8px;
+        transition: background 0.3s;
+        border: none;
+        cursor: pointer;
+    }
+    
+    .button:hover {
+        background: #0056b3;
+    }
+    
+    </style>
