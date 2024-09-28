@@ -11,46 +11,38 @@
             margin: 0;
             padding: 20px;
         }
-
         header {
             text-align: center;
             margin-bottom: 20px;
         }
-
         h1 {
             color: #333;
         }
-
         .faq {
             max-width: 800px;
             margin: 0 auto;
         }
-
         .faq-item {
             background: white;
             border-radius: 10px;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
             padding: 20px;
             margin-bottom: 15px;
-            transition: box-shadow 0.3s ease;
         }
-
-        .faq-item:hover {
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-        }
-
         .faq-item h3 {
             color: #007bff;
             cursor: pointer;
             margin: 0;
         }
-
         .faq-answer {
-            display: none;
             margin-top: 10px;
             color: #555;
         }
-
+        .admin-reply {
+            margin-top: 10px;
+            font-weight: bold;
+            color: #007bff;
+        }
         .question-form {
             margin-top: 30px;
             background: white;
@@ -58,17 +50,14 @@
             border-radius: 10px;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         }
-
         .form-group {
             margin-bottom: 15px;
         }
-
         .form-group label {
             display: block;
             margin-bottom: 5px;
             color: #333;
         }
-
         .form-group textarea {
             width: 100%;
             height: 100px;
@@ -78,7 +67,6 @@
             resize: none;
             font-family: 'Arial', sans-serif;
         }
-
         button {
             background-color: #007bff;
             color: white;
@@ -86,33 +74,16 @@
             border: none;
             border-radius: 5px;
             cursor: pointer;
-            transition: background 0.3s;
         }
-
         button:hover {
             background-color: #0056b3;
         }
-
         .flash-message {
             background-color: #dff0d8;
             color: #3c763d;
             padding: 10px;
             margin-bottom: 20px;
             border-radius: 5px;
-        }
-
-        @media (max-width: 600px) {
-            .faq-item {
-                padding: 15px;
-            }
-
-            .question-form {
-                padding: 15px;
-            }
-
-            .form-group textarea {
-                height: 80px;
-            }
         }
     </style>
 </head>
@@ -133,19 +104,25 @@
           {% endif %}
         {% endwith %}
         
+        {% for question in questions %}
         <div class="faq-item">
-            <h3 onclick="toggleAnswer(this)">What is the job application process?</h3>
+            <h3 onclick="toggleAnswer(this)">{{ question.user_question }}</h3>
             <div class="faq-answer">
-                <p>The application process typically involves submitting your resume and cover letter, followed by interviews and assessments.</p>
+                {% if question.admin_reply %}
+                <div class="admin-reply">
+                    Admin Reply: {{ question.admin_reply }}
+                </div>
+                {% endif %}
+                <form action="/reply_question/{{ question.id }}" method="POST">
+                    <div class="form-group">
+                        <label for="admin_reply">Admin Reply:</label>
+                        <textarea id="admin_reply" name="admin_reply" required></textarea>
+                    </div>
+                    <button type="submit">Submit Reply</button>
+                </form>
             </div>
         </div>
-        <div class="faq-item">
-            <h3 onclick="toggleAnswer(this)">How can I prepare for an interview?</h3>
-            <div class="faq-answer">
-                <p>Research the company, practice common interview questions, and prepare questions to ask the interviewer.</p>
-            </div>
-        </div>
-        <!-- Add more FAQ items as needed -->
+        {% endfor %}
 
         <div class="question-form">
             <h2>Ask Your Own Question</h2>
