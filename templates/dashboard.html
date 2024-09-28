@@ -3,16 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Overview - Dashboard</title>
+    <title> Dashboard</title>
 </head>
 <body>
     <header>
         <h1>MMU Job Portal Dashboard</h1>
-        <a href="{{ url_for('login') }}" class="logout-btn">Logout</a> <!-- Logout Button -->
+        <a href="{{ url_for('logout') }}" class="logout-btn">Logout</a> <!-- Logout Button -->
     </header>
     <div class="container">
         <aside class="sidebar">
             <nav>
+                <a href="user_home.html" class="nav-link">Home</a>
                 <a href="jobs.html" class="nav-link">Available Jobs</a>
                 <a href="post_jobs.html" class="nav-link">Post Jobs</a>
                 <a href="contactus.html" class="nav-link">Contact Us</a>
