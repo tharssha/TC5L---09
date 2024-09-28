@@ -6,6 +6,74 @@
     <title>User Profile</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
+<style>
+    body {
+        font-family: 'Arial', sans-serif;
+        background-color: #2a0d35; /* Dark background */
+        color: #fff; /* White text */
+    }
+
+    .container {
+        max-width: 600px;
+        margin-top: 50px;
+        padding: 30px;
+        background: #5c3c82; /* Dark purple background */
+        border-radius: 10px;
+        box-shadow: 0 2px 15px rgba(0, 0, 0, 0.3);
+    }
+
+    h2 {
+        text-align: center;
+        margin-bottom: 20px;
+        color: #ffffff; 
+    }
+
+    label {
+        font-weight: bold;
+        margin-bottom: 10px;
+        color: #e0b3e8; /* Light purple */
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="password"],
+    textarea {
+        width: 100%;
+        padding: 12px;
+        border: 1px solid #e0b3e8; /* Light purple border */
+        border-radius: 5px;
+        margin-bottom: 20px;
+        background-color: #7c5a9d; /* Medium purple */
+        color: #fff;
+    }
+
+    input:focus,
+    textarea:focus {
+        border-color: #ab7dc4; 
+        outline: none;
+        box-shadow: 0 0 5px rgba(171, 125, 196, 0.5);
+    }
+
+    button {
+        background-color: #ab7dc4; /* Button color */
+        color: white;
+        border: none;
+        padding: 12px;
+        border-radius: 5px;
+        width: 100%;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+    button:hover {
+        background-color: #52095a; /* Darker purple on hover */
+    }
+
+    .alert {
+        margin-top: 20px;
+    }
+</style>
 <body>
     <div class="container mt-5">
         <h2>User Profile</h2>
