@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile</title>
+    <link rel="stylesheet" href="main.css">
+</head>
+<body>    
+    <div class="row">
+        <div class="col-md-12">
+            <form action="/main.html/" method="post">
+                <h1>Profile Update</h1>
+                
+                <fieldset>
+                    <legend><span class="number">1</span> Basic Information</legend>
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" required>
+
+                    <label for="email">Email:</label>
+                    <input type="email" id="mail" name="email" required>
+
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password" required>
+
+                    <label for="age">Age:</label>
+                    <input type="number" id="age" name="age" required>
+                </fieldset>
+
+                <fieldset>
+                    <legend><span class="number">2</span> Profile</legend>
+                    <label for="bio">Bio:</label>
+                    <textarea id="bio" name="bio" required></textarea>
+
+                    <label for="status">Academic Level:</label>
+                    <input type="text" id="status" name="status" required>
+
+                    <label for="faculty">Faculty:</label>
+                    <input type="text" id="faculty" name="faculty" required>
+                </fieldset>
+
+                <button type="submit">Save Profile</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MMU Job Portal</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+</head>
+<body>
+    <header>
+        <h1>MMU Job Portal</h1>
+    </header>
+    <div class="container">
+        <aside class="sidebar">
+            <nav>
+                <a href="user_home.html" class="nav-link active">Home</a>
+                <a href="profile.html" class="nav-link">Resume</a>
+            </nav>
+        </aside>
+        <main class="main-content">
+            <div class="dashboard-header">
+                <h2>Welcome to MMU Job Portal!</h2>
+            </div>
+            
+            <section>
+                <p>Are you having difficulties to look for work?</p>
+            </section>
+        
+            <section>
+                <img class="Slides" src="image/1.jpg" style="width:100%">
+                <img class="Slides" src="image/2.jpg" style="width:100%">
+                <img class="Slides" src="image/3.jpg" style="width:100%">
+            </section>
+            <script src="script.js"></script>
+
+            <footer class="footer">
+                <p class="w3-medium">
+                  Powered by <a href="https://www.mmu.edu.my" target="_blank">MMU</a>
+                </p>
+            </footer>
+        </main>
+    </div>
+
+</body>
+</html>
+
+<style>/* General reset and box-sizing */
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    
+    /* Basic styles for the body */
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        line-height: 1.6;
+        background-color: #f4f4f4;
+        color: #333;
+    }
+
+    p {
+        font-size: 24px;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+    }
+    
+    /* Header styling */
+    header {
+        background: #007BFF;
+        color: white;
+        padding: 1rem 2rem;
+        text-align: center;
+        position: sticky;
+        top: 0;
+        width: 100%;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    
+    header h1 {
+        margin: 0;
+    }
+
+    h2 {
+        color:#000000;
+        font-size: 40px;
+        font-family: 'Times New Roman', Times, serif;
+    }
+    
+    /* Main container styling */
+    .container {
+        display: flex;
+        height: calc(100vh - 80px); /* Adjust for header height */
+    }
+    
+    /* Sidebar styling */
+    .sidebar {
+        width: 250px;
+        background: #333;
+        color: #fff;
+        padding: 1rem;
+        position: sticky;
+        top: 80px; /* Adjust for header height */
+        height: calc(100vh - 80px); /* Adjust for header height */
+        overflow-y: auto;
+    }
+    
+    .sidebar nav {
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .nav-link {
+        color: #fff;
+        text-decoration: none;
+        margin-bottom: 10px;
+        padding: 10px;
+        border-radius: 5px;
+        display: block;
+    }
+    
+    .nav-link:hover,
+    .nav-link.active {
+        background: #007BFF;
+    }
+    
+    /* Main content styling */
+    .main-content {
+        flex: 1;
+        padding: 1rem 2rem;
+    }
+    
+    .dashboard-header {
+        margin-bottom: 20px;
+    }
+    
+    .form-container {
+        background: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .Slides {
+        width: 300px;
+        height: 525px;
+        object-fit: cover;
+    }
+
+    body {
+    font-family: 'Georgia', sans-serif;
+    color: black;
+    }
+
+    .footer {
+    background-color: black;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    font-size: 20px;
+    }
+
+    </style>
